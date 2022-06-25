@@ -49,6 +49,7 @@ h1 {
 .done {
   text-decoration: line-through;
   color: gray;
+  cursor: not-allowed;
 }
 
 .done #check {

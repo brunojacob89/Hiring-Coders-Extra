@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Botao from "./components/Botao";
 import TaskContainer from "./components/TaskContainer";
 import TaskItem from "./components/TaskItem"
 import "./styles/global.css";
@@ -36,15 +37,22 @@ function App() {
   return (
     <main className="container">
       <h1 className="m-5"> Task Manager</h1>
-      <div id="new-task">
-        <input type="text" onChange={(event) => setTituloTarefa(event.target.value)} value={tituloTarefa} />
-        <button id="btnAdd" className="btn btn-primary" onClick={adicionarTarefa}>
-          add
-        </button>
-      </div>
+      <form id="new-task" onSubmit={adicionarTarefa}>
+        <input
+         type="text" 
+         onChange={(event) => setTituloTarefa(event.target.value)}
+         value={tituloTarefa} 
+         />
+       <Botao texto="Adicionar" cor="success" />
+      </form>
+      
       <TaskContainer>
         {tarefas.map((tarefa: Tarefa, posicao: number) =>{
-          return <TaskItem titulo={tarefa.titulo} done={tarefa.done} concluirTarefa = {()=> concluirTarefa(posicao)}  />
+          return <TaskItem 
+          titulo={tarefa.titulo} 
+          done={tarefa.done} 
+          concluirTarefa = {()=> concluirTarefa(posicao)}  
+          />
         })}
       </TaskContainer>
     </main>
